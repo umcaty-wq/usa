@@ -68,10 +68,10 @@
   .hero{position:relative;max-width:680px;margin:0 auto;padding-bottom:28px}
   .hero-pill{position:absolute;left:18px;top:max(18px,env(safe-area-inset-top));z-index:3;font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;
     text-transform:uppercase;color:#fff;background:var(--text);padding:8px 12px;border-radius:999px}
-  .hero-strip{position:relative;height:clamp(300px,58vw,420px);background:#fff url(img/alina.jpg) no-repeat;
-    background-size:clamp(560px,105vw,780px) auto;background-position:55% 47%}
-  .hero-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 55%,#fff 100%)}
-  .hero-body{position:relative;margin-top:-34px;padding:0 20px}
+  .hero-strip{position:relative;height:clamp(360px,88vw,470px);background:#fff url(img/alina.jpg) no-repeat;
+    background-size:clamp(560px,150vw,780px) auto;background-position:55% 66%}
+  .hero-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 82%,#fff 100%)}
+  .hero-body{position:relative;margin-top:-10px;padding:0 20px}
   .hero h1{font:700 clamp(30px,8.2vw,48px)/1.02 Unbounded,sans-serif;letter-spacing:-.035em;margin:0 0 20px}
   .hero h1 em{font-style:normal;color:var(--accent)}
   .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -120,11 +120,6 @@
   <div class="hero-strip" role="img" aria-label="алина котова"></div>
   <div class="hero-body">
     <h1>как делать <em>5000&nbsp;баксов</em> на американских заказчиках</h1>
-    <div class="vs">
-      <div class="vcard ru"><div class="k">таргетолог · рф</div><div class="v">45 000 ₽</div><div class="s">в месяц, хх</div></div>
-      <div class="vcard us"><div class="k">ad buyer · сша</div><div class="v">$6 600</div><div class="s">в месяц, linkedin</div></div>
-    </div>
-    <p class="hero-note">та же работа. разница только в том, кому ты ее продаешь</p>
     <a class="hero-btn" href="#start">читать, как я это делаю ↓</a>
   </div>
 </header>
@@ -285,24 +280,13 @@
 
 </main>
 
-<div class="sticky" id="sticky"><a class="btn js-bot" href="#">забрать блок в предзапись</a></div>
+<div class="sticky on" id="sticky"><a class="btn js-bot" href="#">забрать блок в предзапись</a></div>
 
 <script>
   // ссылка на бота: поменяй на свою, метка после start показывает боту, что человек пришел со статьи
   var BOT_LINK = "https://t.me/YOUR_BOT?start=lm_us_done";
   document.querySelectorAll(".js-bot").forEach(function(a){ a.href = BOT_LINK; a.target = "_blank"; a.rel = "noopener"; });
 
-  // кнопка внизу появляется, когда дочитали до половины, и прячется у основной кнопки
-  var sticky = document.getElementById("sticky");
-  var mainBtn = document.querySelector("main .js-bot");
-  function onScroll(){
-    var h = document.documentElement;
-    var progress = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight);
-    var r = mainBtn.getBoundingClientRect();
-    var mainVisible = r.top < window.innerHeight && r.bottom > 0;
-    sticky.classList.toggle("on", progress > 0.5 && !mainVisible);
-  }
-  window.addEventListener("scroll", onScroll, {passive:true});
 </script>
 </body>
 </html>
