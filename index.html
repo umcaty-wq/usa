@@ -285,13 +285,18 @@
 
 </main>
 
-<div class="sticky on" id="sticky"><a class="btn js-bot" href="#">забрать блок в предзапись</a></div>
+<div class="sticky" id="sticky"><a class="btn js-bot" href="#">забрать блок в предзапись</a></div>
 
 <script>
   // ссылка на бота: поменяй на свою, метка после start показывает боту, что человек пришел со статьи
   var BOT_LINK = "https://t.me/YOUR_BOT?start=lm_us_done";
   document.querySelectorAll(".js-bot").forEach(function(a){ a.href = BOT_LINK; a.target = "_blank"; a.rel = "noopener"; });
 
+  // синяя кнопка появляется со второго экрана, когда шапка ушла
+  var sticky = document.getElementById("sticky");
+  var hero = document.querySelector(".hero");
+  function onScroll(){ sticky.classList.toggle("on", hero.getBoundingClientRect().bottom < 0); }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 </script>
 </body>
 </html>
