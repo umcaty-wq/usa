@@ -65,23 +65,28 @@
     background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.95) 35%);transform:translateY(110%);transition:transform .3s}
   .sticky.on{transform:none}
   .sticky .btn{max-width:680px;margin:0 auto}
-  .hero{position:relative;height:min(92vh,760px);min-height:560px;overflow:hidden;background:#f3f3f1}
-  .hero-bg{position:absolute;inset:0;background:url(img/alina.jpg) no-repeat;background-size:max(150%,640px) auto;background-position:62% 30%}
-  .hero-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 50%,rgba(255,255,255,.55) 72%,#fff 97%)}
-  .hero-pill{position:absolute;left:20px;top:20px;font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;
-    text-transform:uppercase;color:#fff;background:var(--text);padding:8px 12px;border-radius:999px;z-index:2}
-  .hero-in{position:absolute;left:0;right:0;bottom:0;padding:0 20px 24px;max-width:1100px;margin:0 auto;z-index:2}
-  .hero h1{margin:0 0 20px;font:700 clamp(30px,8.4vw,72px)/.98 Unbounded,sans-serif;letter-spacing:-.03em;color:var(--text)}
-  .hero h1 span{display:block}
-  .hero h1 .l2{color:var(--accent);font-size:1.32em;margin:.06em 0 .08em}
-  .hero h1 .l3{font-size:.62em;letter-spacing:-.02em;font-weight:600}
-  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.72);
-    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);max-width:620px}
-  .hero-stats div{padding:14px 14px 12px}
-  .hero-stats div+div{border-left:1px solid var(--line)}
-  .hero-stats b{display:block;font:700 clamp(19px,5vw,30px)/1 Unbounded,sans-serif;letter-spacing:-.02em;color:var(--text)}
-  .hero-stats b.hl{color:var(--accent)}
-  .hero-stats i{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:6px}
+  .hero{position:relative;max-width:680px;margin:0 auto;padding-bottom:28px}
+  .hero-pill{position:absolute;left:18px;top:max(18px,env(safe-area-inset-top));z-index:3;font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;background:var(--text);padding:8px 12px;border-radius:999px}
+  .hero-strip{position:relative;height:clamp(300px,58vw,420px);background:#fff url(img/alina.jpg) no-repeat;
+    background-size:clamp(560px,105vw,780px) auto;background-position:55% 47%}
+  .hero-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 55%,#fff 100%)}
+  .hero-body{position:relative;margin-top:-34px;padding:0 20px}
+  .hero h1{font:700 clamp(30px,8.2vw,48px)/1.02 Unbounded,sans-serif;letter-spacing:-.035em;margin:0 0 20px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .vcard{border-radius:18px;padding:15px 15px 14px;border:1px solid var(--line);background:#fff}
+  .vcard .k{font:600 10px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .vcard .v{font:700 clamp(21px,6vw,30px)/1.05 Unbounded,sans-serif;letter-spacing:-.03em;margin:11px 0 5px}
+  .vcard .s{font-size:12px;color:var(--muted)}
+  .vcard.ru .v{text-decoration:line-through;text-decoration-thickness:2px;color:#9a9ca6}
+  .vcard.us{background:var(--accent);border-color:var(--accent);color:#fff}
+  .vcard.us .k,.vcard.us .s{color:rgba(255,255,255,.78)}
+  .hero-note{font-size:15px;color:var(--muted);margin:16px 0 0}
+  .hero-btn{display:block;margin-top:18px;text-align:center;background:var(--text);color:#fff;border-radius:14px;padding:17px;
+    font:600 16px/1 Onest,sans-serif;text-decoration:none}
+  @media (min-width:700px){ .hero-strip{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)} }
+  html{scroll-behavior:smooth}
   .ticker{background:var(--text);color:#fff;overflow:hidden;white-space:nowrap}
   .ticker-track{display:inline-block;animation:tick 26s linear infinite;padding:14px 0}
   .ticker span{font:600 13px/1 Unbounded,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:0 18px}
@@ -89,14 +94,6 @@
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
   @media (max-width:520px){
-    .hero{height:min(88svh,700px);min-height:520px}
-    .hero-pill{top:max(16px,env(safe-area-inset-top));left:16px}
-    .hero-in{padding:0 16px 18px}
-    .hero h1{font-size:clamp(28px,9.6vw,40px);margin-bottom:14px}
-    .hero-stats div{padding:10px 8px 9px}
-    .hero-stats div+div{padding-left:9px}
-    .hero-stats b{font-size:clamp(14px,4.4vw,18px)}
-    .hero-stats i{font-size:10.5px;margin-top:4px;line-height:1.2}
     .ticker span{font-size:11px;margin:0 12px}
     .ticker span::after{margin-left:24px}
     .ticker-track{padding:11px 0}
@@ -113,31 +110,29 @@
     .btn{padding:17px 18px;font-size:16px}
     .sticky{padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
   }
-  @media (min-width:900px){ .hero-bg{background-size:100% auto;background-position:50% 18%} .hero-in{padding-bottom:40px} }
   hr{border:0;border-top:1px solid var(--line);margin:48px 0}
   @media (max-width:520px){ body{font-size:17px} .cols{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="hero-bg" role="img" aria-label="алина котова"></div>
-  <div class="hero-fade"></div>
   <span class="hero-pill">kotova ads</span>
-  <div class="hero-in">
-    <h1><span class="l1">как делать</span><span class="l2">5000 баксов</span><span class="l3">на американских заказчиках</span></h1>
-    <div class="hero-stats">
-      <div><b class="hl">$300K+</b><i>отлито бюджета</i></div>
-      <div><b>20+</b><i>стран</i></div>
-      <div><b>15+</b><i>ниш</i></div>
-      <div><b class="hl">3.5</b><i>года</i></div>
+  <div class="hero-strip" role="img" aria-label="алина котова"></div>
+  <div class="hero-body">
+    <h1>как делать <em>5000&nbsp;баксов</em> на американских заказчиках</h1>
+    <div class="vs">
+      <div class="vcard ru"><div class="k">таргетолог · рф</div><div class="v">45 000 ₽</div><div class="s">в месяц, хх</div></div>
+      <div class="vcard us"><div class="k">ad buyer · сша</div><div class="v">$6 600</div><div class="s">в месяц, linkedin</div></div>
     </div>
+    <p class="hero-note">та же работа. разница только в том, кому ты ее продаешь</p>
+    <a class="hero-btn" href="#start">читать, как я это делаю ↓</a>
   </div>
 </header>
 <div class="ticker"><div class="ticker-track">
   <span>meta ads</span><span>$14 470 продаж</span><span>39 лидов за $296</span><span>roas 3.6×</span><span>80% клиентов из сша</span>
   <span>meta ads</span><span>$14 470 продаж</span><span>39 лидов за $296</span><span>roas 3.6×</span><span>80% клиентов из сша</span>
 </div></div>
-<main class="wrap">
+<main class="wrap" id="start">
 
 
   <div class="label">могу:</div>
