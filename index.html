@@ -87,7 +87,7 @@
   .hero-btn{display:block;margin-top:14px;text-align:center;background:var(--text);color:#fff;border-radius:14px;padding:17px;
     font:600 16px/1 Onest,sans-serif;text-decoration:none}
   @media (min-width:700px){ .hero-strip{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)} }
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth} #buy{scroll-margin-top:20px}
   .ticker{background:var(--text);color:#fff;overflow:hidden;white-space:nowrap}
   .ticker-track{display:inline-block;animation:tick 26s linear infinite;padding:14px 0}
   .ticker span{font:600 13px/1 Unbounded,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:0 18px}
@@ -262,7 +262,7 @@
     </div>
   </section>
 
-  <h2>что дальше</h2>
+  <h2 id="buy">что дальше</h2>
 
   <p>окей, давай честно. у тебя сейчас два варианта</p>
   <div class="cols">
@@ -315,7 +315,7 @@
 
 </main>
 
-<div class="sticky" id="sticky"><a class="btn js-bot" href="#">хочу сша клиентов</a></div>
+<div class="sticky" id="sticky"><a class="btn" href="#buy">хочу сша клиентов</a></div>
 
 <script>
   // ссылка на бота: поменяй на свою, метка после start показывает боту, что человек пришел со статьи
@@ -325,7 +325,8 @@
   // синяя кнопка появляется со второго экрана, когда шапка ушла
   var sticky = document.getElementById("sticky");
   var hero = document.querySelector(".hero");
-  function onScroll(){ sticky.classList.toggle("on", hero.getBoundingClientRect().bottom < 0); }
+  var buy = document.getElementById("buy");
+  function onScroll(){ sticky.classList.toggle("on", hero.getBoundingClientRect().bottom < 0 && buy.getBoundingClientRect().top > window.innerHeight*0.6); }
   window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 </script>
 </body>
