@@ -113,6 +113,18 @@
   }
   figure.pay{max-width:440px;margin:6px auto 26px}
   figure.pay img{border-radius:16px;border:0}
+  .art{position:relative;margin:56px calc(50% - 50vw) 28px;background:#f1a0bb;overflow:hidden;min-height:380px}
+  .art-in{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:36px 20px 40px}
+  .art h2{margin:10px 0 10px;max-width:58%;color:#111114;font-size:clamp(24px,6.6vw,40px);line-height:1.05}
+  .art-k{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#111114;opacity:.6}
+  .art-sub{max-width:55%;margin:0;color:#3a2230;font-size:16px}
+  .art-img{position:absolute;right:max(-60px,calc(50% - 470px));bottom:0;height:100%;width:auto;z-index:1;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+  @media (max-width:520px){
+    .art{min-height:360px}
+    .art h2{max-width:62%}
+    .art-img{right:-90px;height:100%}
+  }
   hr{border:0;border-top:1px solid var(--line);margin:48px 0}
   @media (max-width:520px){ body{font-size:17px} .cols{grid-template-columns:1fr} }
 </style>
@@ -238,7 +250,14 @@
   <h2>чтобы не было ощущения, что у меня все идеально</h2>
   <p><span class="ph">один провал: слитый тест, сумма или сорвавшийся клиент, и что ты из этого поняла</span></p>
 
-  <h2>теперь про то, что ты сейчас думаешь</h2>
+  <section class="art">
+    <div class="art-in">
+      <div class="art-k">возражения</div>
+      <h2>теперь про то, что ты сейчас думаешь</h2>
+      <p class="art-sub">да-да, вот с таким лицом))</p>
+    </div>
+    <img class="art-img" src="img/art.jpg" alt="">
+  </section>
 
   <div class="obj"><h3>«я не знаю английский»</h3>
     <p><span class="ph">как ведешь переписку и созвоны, какие нейронки</span>. язык сейчас вообще не барьер. барьер это страшно написать первое сообщение</p></div>
