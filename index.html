@@ -119,6 +119,19 @@
   .art-k{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#111114;opacity:.6}
   .art h2{margin:10px 0 18px;color:#111114}
   .art .obj{background:#fff;border-color:transparent}
+  .tariff{position:relative;overflow:hidden;background:#111114;color:#fff;border-radius:26px;padding:24px 20px 20px;margin:26px 0 14px}
+  .tariff::after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle,rgba(47,91,255,.55),transparent 70%);pointer-events:none}
+  .t-k{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .t-name{font:700 clamp(20px,5.6vw,26px)/1.15 Unbounded,sans-serif;letter-spacing:-.02em;margin:10px 0 16px}
+  .t-price{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .t-price b{font:700 clamp(44px,12vw,56px)/1 Unbounded,sans-serif;letter-spacing:-.04em}
+  .t-price span{color:rgba(255,255,255,.6);font-size:14px}
+  .tariff ul{list-style:none;margin:0;padding:0}
+  .tariff li{position:relative;padding:11px 0 11px 28px;border-top:1px solid rgba(255,255,255,.12);font-size:15.5px;line-height:1.4}
+  .tariff li::before{content:"✓";position:absolute;left:3px;top:11px;color:#8ea6ff;font-weight:700}
+  .tariff li b{font-weight:600}
+  .tariff .btn{position:relative;z-index:1;margin:18px 0 0}
   hr{border:0;border-top:1px solid var(--line);margin:48px 0}
   @media (max-width:520px){ body{font-size:17px} .cols{grid-template-columns:1fr} }
 </style>
@@ -266,17 +279,21 @@
 
   <p>а дальше самое важное: ты не остаешься с этим один. месяц в клубе ты приносишь мне свой оффер, кабинет и переписку с американцем, и я говорю, что поправить. не через полгода курса, а пока ты запускаешься</p>
 
-  <div class="price">
-    <div class="tag">блок + месяц в клубе</div>
-    <div class="big">$50</div>
-    <div class="small">дешевле одного слитого дня теста))</div>
+  <div class="tariff">
+    <div class="t-k">блок + месяц в клубе</div>
+    <div class="t-name">американские заказчики</div>
+    <div class="t-price"><b>$50</b><span>дальше клуб $30/мес, отмена в один клик</span></div>
+    <ul>
+      <li><b>урок с экрана:</b> мой реальный запуск от настройки до оплаты</li>
+      <li><b>шаблоны:</b> оффер на английском, сообщения, скрипт созвона, кп, таблица учета</li>
+      <li><b>задание на первую неделю</b></li>
+      <li><b>чат со мной:</b> отвечаю раз в день по будням</li>
+      <li><b>2 разбора в месяц</b> и закрытый проект месяца</li>
+    </ul>
+    <a class="btn js-bot" href="#">хочу сша клиентов</a>
   </div>
 
-  <p class="note">дальше клуб $30 в месяц, если хочешь остаться. не хочешь, отменяешь в один клик</p>
-
-  <p>блок выходит <span class="ph">дата</span>. сейчас он в предзаписи <span class="ph">условия предзаписи</span></p>
-
-  <a class="btn js-bot" href="#">хочу сша клиентов 👉</a>
+  <p class="note" style="text-align:center">блок выходит <span class="ph">дата</span>. сейчас он в предзаписи <span class="ph">условия предзаписи</span></p>
 
 </main>
 
