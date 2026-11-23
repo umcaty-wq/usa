@@ -132,6 +132,17 @@
   .tariff li::before{content:"✓";position:absolute;left:3px;top:11px;color:#8ea6ff;font-weight:700}
   .tariff li b{font-weight:600}
   .tariff .btn{position:relative;z-index:1;margin:18px 0 0}
+  .t-pre{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:7px 12px;border-radius:999px;
+    background:rgba(47,91,255,.22);color:#c7d3ff;font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.04em}
+  .t-pre .dot{width:7px;height:7px;border-radius:50%;background:#5b8cff;box-shadow:0 0 0 0 rgba(91,140,255,.7);animation:pulse 1.6s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(91,140,255,0)}100%{box-shadow:0 0 0 0 rgba(91,140,255,0)}}
+  .t-price s{font:600 22px/1 Unbounded,sans-serif;color:rgba(255,255,255,.4);text-decoration-thickness:2px}
+  .t-timer{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 14px}
+  .t-timer div{background:rgba(255,255,255,.07);border-radius:12px;padding:9px 4px 7px;text-align:center}
+  .t-timer b{display:block;font:700 22px/1 "JetBrains Mono",monospace;color:#fff}
+  .t-timer i{display:block;font-style:normal;font-size:11px;color:rgba(255,255,255,.5);margin-top:4px}
+  .t-why{font-size:14px;color:rgba(255,255,255,.75);margin:0 0 8px;line-height:1.45}
+  .t-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px}
   hr{border:0;border-top:1px solid var(--line);margin:48px 0}
   @media (max-width:520px){ body{font-size:17px} .cols{grid-template-columns:1fr} }
 </style>
@@ -298,9 +309,15 @@
   <p>а дальше самое важное: ты не остаешься с этим один. месяц в клубе ты приносишь мне свой оффер, кабинет и переписку с американцем, и я говорю, что поправить. не через полгода курса, а пока ты запускаешься</p>
 
   <div class="tariff">
+    <div class="t-pre" id="pre"><span class="dot"></span>предзапись до 26.11, 18:00 мск</div>
     <div class="t-k">блок + месяц в клубе</div>
     <div class="t-name">американские заказчики</div>
-    <div class="t-price"><b>$50</b><span>дальше клуб $30/мес, отмена в один клик</span></div>
+    <div class="t-price"><b id="price">$49</b><s id="old">$50</s></div>
+    <div class="t-timer" id="timer">
+      <div><b id="d">0</b><i>дн</i></div><div><b id="h">00</b><i>час</i></div><div><b id="m">00</b><i>мин</i></div><div><b id="sec">00</b><i>сек</i></div>
+    </div>
+    <p class="t-why" id="why">пока блок не вышел, он стоит $49. 26 ноября в 18:00 по мск выходит урок, и цена становится $50. разница копеечная, но первые получают доступ в клуб раньше всех))</p>
+    <div class="t-sub">дальше клуб $30/мес, отмена в один клик</div>
     <ul>
       <li><b>урок с экрана:</b> мой реальный запуск от настройки до оплаты</li>
       <li><b>шаблоны:</b> оффер на английском, сообщения, скрипт созвона, кп, таблица учета</li>
@@ -311,7 +328,6 @@
     <a class="btn js-bot" href="#">хочу сша клиентов</a>
   </div>
 
-  <p class="note" style="text-align:center">блок выходит <span class="ph">дата</span>. сейчас он в предзаписи <span class="ph">условия предзаписи</span></p>
 
 </main>
 
@@ -328,6 +344,26 @@
   var buy = document.getElementById("buy");
   function onScroll(){ sticky.classList.toggle("on", hero.getBoundingClientRect().bottom < 0 && buy.getBoundingClientRect().top > window.innerHeight*0.6); }
   window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  // предзапись: таймер до выхода блока, после него цена $50
+  (function(){
+    var end = new Date("2026-11-26T18:00:00+03:00").getTime();
+    function pad(n){ return (n<10?"0":"")+n; }
+    function tick(){
+      var left = end - Date.now();
+      if(left <= 0){
+        ["pre","timer","why","old"].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display="none"; });
+        document.getElementById("price").textContent = "$50";
+        return;
+      }
+      var t = Math.floor(left/1000);
+      document.getElementById("d").textContent = Math.floor(t/86400);
+      document.getElementById("h").textContent = pad(Math.floor(t%86400/3600));
+      document.getElementById("m").textContent = pad(Math.floor(t%3600/60));
+      document.getElementById("sec").textContent = pad(t%60);
+      setTimeout(tick, 1000);
+    }
+    tick();
+  })();
 </script>
 </body>
 </html>
