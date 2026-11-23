@@ -137,6 +137,7 @@
   .t-pre .dot{width:7px;height:7px;border-radius:50%;background:#5b8cff;box-shadow:0 0 0 0 rgba(91,140,255,.7);animation:pulse 1.6s infinite}
   @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(91,140,255,0)}100%{box-shadow:0 0 0 0 rgba(91,140,255,0)}}
   .t-price s{font:600 22px/1 Unbounded,sans-serif;color:rgba(255,255,255,.4);text-decoration-thickness:2px}
+  .t-tl{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:2px 0 8px}
   .t-timer{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 14px}
   .t-timer div{background:rgba(255,255,255,.07);border-radius:12px;padding:9px 4px 7px;text-align:center}
   .t-timer b{display:block;font:700 22px/1 "JetBrains Mono",monospace;color:#fff}
@@ -313,6 +314,7 @@
     <div class="t-k">блок + месяц в клубе</div>
     <div class="t-name">американские заказчики</div>
     <div class="t-price"><b id="price">$49</b><s id="old">$60</s></div>
+    <div class="t-tl" id="tl">до окончания скидки</div>
     <div class="t-timer" id="timer">
       <div><b id="d">0</b><i>дн</i></div><div><b id="h">00</b><i>час</i></div><div><b id="m">00</b><i>мин</i></div><div><b id="sec">00</b><i>сек</i></div>
     </div>
@@ -351,7 +353,7 @@
     function tick(){
       var left = end - Date.now();
       if(left <= 0){
-        ["pre","timer","why","old"].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display="none"; });
+        ["pre","tl","timer","why","old"].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display="none"; });
         document.getElementById("price").textContent = "$60";
         return;
       }
